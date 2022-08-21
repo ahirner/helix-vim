@@ -2,8 +2,8 @@ theme = "ayu_dark"
 
 [keys.normal]
 # Quick iteration on config changes
-C-o = ":config-open"
-C-r = ":config-reload"
+#C-o = ":config-open"
+#C-r = ":config-reload"
 
 # Some nice Helix stuff
 C-h = "select_prev_sibling"
@@ -27,7 +27,7 @@ S = "surround_add" # Would be nice to be able to do something after this but it 
 # Extend and select commands that expect a manual input can't be chained
 # I've kept d[X] commands here because it's better to at least have the stuff you want to delete
 # selected so that it's just a keystroke away to delete
-d = { d = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection"], s = ["surround_delete"], w = ["move_next_word_start", "delete_selection"] }
+d = { d = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection"], s = ["surround_delete"], w = ["move_next_word_start", "delete_selection"], W = ["move_next_long_word_start", "delete_selection"]}
 
 # Clipboards over registers ye ye
 x = "delete_selection"
@@ -38,9 +38,10 @@ y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "coll
 Y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "goto_line_start", "collapse_selection"]
 
 # Uncanny valley stuff, this makes w and b behave as they do Vim
-w = ["move_next_word_start", "move_char_right", "collapse_selection"]
-e = ["move_next_word_end", "collapse_selection"]
-b = ["move_prev_word_start", "collapse_selection"]
+w = ["move_next_word_start", "move_char_right"]
+W = ["move_next_long_word_start", "move_char_right"]
+e = ["move_next_word_end"]
+b = ["move_prev_word_start"]
 
 # If you want to keep the selection-while-moving behaviour of Helix, this two lines will help a lot,
 # especially if you find having text remain selected while you have switched to insert or append mode
@@ -48,8 +49,8 @@ b = ["move_prev_word_start", "collapse_selection"]
 # There is no real difference if you have overriden the commands bound to 'w', 'e' and 'b' like above
 # But if you really want to get familiar with the Helix way of selecting-while-moving, comment the
 # bindings for 'w', 'e', and 'b' out and leave the bindings for 'i' and 'a' active below. A world of difference!
-i = ["insert_mode", "collapse_selection"] # Requires https://github.com/helix-editor/helix/issues/2052#issuecomment-1140358950
-a = ["append_mode", "collapse_selection"] # Requires https://github.com/helix-editor/helix/issues/2052#issuecomment-1140358950
+i = ["collapse_selection", "insert_mode"] # Requires https://github.com/helix-editor/helix/issues/2052#issuecomment-1140358950
+a = ["collapse_selection", "append_mode"] # Requires https://github.com/helix-editor/helix/issues/2052#issuecomment-1140358950
 
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
 esc = ["collapse_selection", "keep_primary_selection"]
@@ -80,10 +81,6 @@ x = "delete_selection"
 # Some extra binds to allow us to insert/append in select mode because it's nice with multiple cursors
 tab = ["insert_mode", "collapse_selection"] # tab is read by most terminal editors as "C-i"
 C-a = ["append_mode", "collapse_selection"]
-
-# Make selecting lines in visual mode behave sensibly
-k = ["extend_line_up", "extend_to_line_bounds"]
-j = ["extend_line_down", "extend_to_line_bounds"]
 
 # Clipboards over registers ye ye
 d = ["yank_main_selection_to_clipboard", "delete_selection"]
