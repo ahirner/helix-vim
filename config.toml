@@ -3,6 +3,9 @@ theme = "ayu_dark"
 [editor]
 idle-timeout = 0
 
+[editor.lsp]
+display-messages = true
+
 [keys.normal]
 
 # Some nice Helix stuff
@@ -10,7 +13,10 @@ C-h = "select_prev_sibling"
 C-j = "shrink_selection"
 C-k = "expand_selection"
 C-l = "select_next_sibling"
-C-s = ":w"
+
+# alacritty modified mac-os Alt
+A-s = ":w"
+A-w = ":bc"
 
 # Muscle memory
 "{" = ["goto_prev_paragraph", "collapse_selection"]
