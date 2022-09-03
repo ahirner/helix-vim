@@ -2,6 +2,11 @@ theme = "ayu_dark"
 
 [editor]
 idle-timeout = 0
+color-modes = true
+
+[editor.statusline]
+center = ["diagnostics"]
+right = ["position", "selections"]
 
 [editor.lsp]
 display-messages = true
@@ -17,6 +22,8 @@ C-l = "select_next_sibling"
 # alacritty modified mac-os Alt
 A-s = ":w"
 A-w = ":bc"
+# rather next window instead of next buffer
+tab  = "rotate_view"
 
 # Muscle memory
 "{" = ["goto_prev_paragraph", "collapse_selection"]
@@ -48,6 +55,8 @@ P = "paste_clipboard_before"
 # Would be nice to add ya and yi, but the surround commands can't be chained
 y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
 Y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "goto_line_start", "collapse_selection"]
+
+X = "delete_char_backward"
 
 # Uncanny valley stuff, this makes w and b behave as they do Vim
 W = ["move_next_long_word_start", "move_char_right"]
