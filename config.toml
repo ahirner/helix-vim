@@ -78,6 +78,8 @@ a = ["append_mode", "collapse_selection"]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
 esc = ["collapse_selection", "keep_primary_selection"]
 
+# Vim'ish *
+"*" = ["move_prev_word_start", "move_next_word_end", "search_selection", "make_search_word_bounded", "search_next"]
 
 [keys.insert]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
