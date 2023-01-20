@@ -44,18 +44,13 @@ S = "surround_add" # Would be nice to be able to do something after this but it 
 C-r = "redo"
 
 U = "repeat_last_motion"  # Can we get better "." semantics at some point? https://github.com/helix-editor/helix/issues/2071#issuecomment-1096831333
-
-# Extend and select commands that expect a manual input can't be chained
-# I've kept d[X] commands here because it's better to at least have the stuff you want to delete
-# selected so that it's just a keystroke away to delete
-d = { d = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection"], s = ["surround_delete"], w = ["move_next_word_start", "delete_selection"], W = ["move_next_long_word_start", "delete_selection"], "$" = ["extend_to_line_end", "delete_selection"] }
-# Similarly for c chains, but c->c with change_selection still panics due to unimplemented (thus C)
-c = { C = ["select_mode", "extend_to_line_bounds", "change_selection"], s = ["surround_delete", "insert_mode"], w = ["move_next_word_start", "yank_main_selection_to_clipboard", "change_selection"], W = ["move_next_long_word_start", "change_selection"]}
+# lands on beginning of undone thing
+u = ["undo", "flip_selections"]
 
 # Clipboards over registers ye ye
 x = "delete_selection"
 p = "paste_clipboard_after"
-P = "paste_clipboard_before"
+P = ["paste_clipboard_before", "collapse_selection"]
 # Would be nice to add ya and yi, but the surround commands can't be chained
 y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
 Y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "goto_line_start", "collapse_selection"]
@@ -63,8 +58,12 @@ Y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "goto_line_sta
 X = "delete_char_backward"
 
 # Uncanny valley stuff, this makes w and b behave as they do Vim
-W = ["move_next_long_word_start", "move_char_right"]
-e = ["move_next_word_end"]
+w = ["move_next_word_start", "move_char_right", "collapse_selection"]
+W = ["move_next_long_word_start", "move_char_right", "collapse_selection"]
+e = ["move_next_word_end", "collapse_selection"]
+E = ["move_next_long_word_end", "collapse_selection"]
+b = ["move_prev_word_start", "collapse_selection"]
+B = ["move_prev_long_word_start", "collapse_selection"]
 
 # If you want to keep the selection-while-moving behaviour of Helix, this two lines will help a lot,
 # especially if you find having text remain selected while you have switched to insert or append mode
@@ -80,6 +79,22 @@ esc = ["collapse_selection", "keep_primary_selection"]
 
 # Vim'ish *
 "*" = ["move_next_word_end", "search_selection", "make_search_word_bounded", "search_next"]
+
+# Extend and select commands that expect a manual input can't be chained
+# I've kept d[X] commands here because it's better to at least have the stuff you want to delete
+# selected so that it's just a keystroke away to delete
+[keys.normal.d]
+d = ["extend_to_line_bounds", "delete_selection"]
+t = ["extend_till_char"]
+s = ["surround_delete"]
+i = ["select_textobject_inner"]
+a = ["select_textobject_around"]
+
+j = ["select_mode", "extend_to_line_bounds", "extend_line_below", "delete_selection", "normal_mode"]
+k = ["select_mode", "extend_to_line_bounds", "extend_line_above", "delete_selection", "normal_mode"]
+G = ["select_mode", "extend_to_line_bounds", "goto_last_line", "extend_to_line_bounds", "delete_selection", "normal_mode"]
+w = ["move_next_word_start", "yank_main_selection_to_clipboard", "delete_selection"]
+W = ["move_next_long_word_start", "yank_main_selection_to_clipboard", "delete_selection"]
 
 [keys.insert]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
