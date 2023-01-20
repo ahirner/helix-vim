@@ -89,6 +89,7 @@ t = ["extend_till_char"]
 s = ["surround_delete"]
 i = ["select_textobject_inner"]
 a = ["select_textobject_around"]
+'$' = ["extend_to_line_end", "delete_selection"]
 
 j = ["select_mode", "extend_to_line_bounds", "extend_line_below", "delete_selection", "normal_mode"]
 k = ["select_mode", "extend_to_line_bounds", "extend_line_above", "delete_selection", "normal_mode"]
