@@ -84,7 +84,7 @@ esc = ["collapse_selection", "keep_primary_selection"]
 # I've kept d[X] commands here because it's better to at least have the stuff you want to delete
 # selected so that it's just a keystroke away to delete
 [keys.normal.d]
-d = ["extend_to_line_bounds", "delete_selection"]
+d = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection"]
 t = ["extend_till_char"]
 s = ["surround_delete"]
 i = ["select_textobject_inner"]
