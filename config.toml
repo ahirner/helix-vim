@@ -123,6 +123,8 @@ A-s = ":w"
 G = "goto_file_end"
 "%" = "match_brackets"
 S = "surround_add" # Basically 99% of what I use vim-surround for
+u = ["switch_to_lowercase", "collapse_selection", "normal_mode"]
+U = ["switch_to_uppercase", "collapse_selection", "normal_mode"]
 
 # Visual-mode specific muscle memory
 i = "select_textobject_inner"
