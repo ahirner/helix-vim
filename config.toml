@@ -15,6 +15,9 @@ display-messages = true
 [editor.cursor-shape]
 insert = "bar"
 
+[editor.soft-wrap]
+enable = true
+
 [keys.normal]
 
 # Some nice Helix stuff
