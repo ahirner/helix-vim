@@ -30,7 +30,7 @@ C-l = "select_next_sibling"
 A-s = ":w"
 A-w = ":bc"
 # rather next window instead of next buffer
-tab  = "rotate_view"
+tab = "rotate_view"
 
 # Muscle memory
 "{" = ["goto_prev_paragraph", "collapse_selection"]
@@ -46,7 +46,7 @@ D = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection
 S = "surround_add" # Would be nice to be able to do something after this but it isn't chainable
 C-r = "redo"
 
-U = "repeat_last_motion"  # Can we get better "." semantics at some point? https://github.com/helix-editor/helix/issues/2071#issuecomment-1096831333
+U = "repeat_last_motion" # Can we get better "." semantics at some point? https://github.com/helix-editor/helix/issues/2071#issuecomment-1096831333
 # lands on beginning of undone thing
 u = ["undo", "flip_selections"]
 
@@ -96,7 +96,14 @@ a = ["select_textobject_around"]
 
 j = ["select_mode", "extend_to_line_bounds", "extend_line_below", "delete_selection", "normal_mode"]
 k = ["select_mode", "extend_to_line_bounds", "extend_line_above", "delete_selection", "normal_mode"]
-G = ["select_mode", "extend_to_line_bounds", "goto_last_line", "extend_to_line_bounds", "delete_selection", "normal_mode"]
+G = [
+  "select_mode",
+  "extend_to_line_bounds",
+  "goto_last_line",
+  "extend_to_line_bounds",
+  "delete_selection",
+  "normal_mode",
+]
 w = ["move_next_word_start", "yank_main_selection_to_clipboard", "delete_selection"]
 W = ["move_next_long_word_start", "yank_main_selection_to_clipboard", "delete_selection"]
 
@@ -129,7 +136,13 @@ C-a = ["append_mode", "collapse_selection"]
 # Clipboards over registers ye ye
 d = ["yank_main_selection_to_clipboard", "delete_selection"]
 y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
-Y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "goto_line_start", "collapse_selection", "normal_mode"]
+Y = [
+  "extend_to_line_bounds",
+  "yank_main_selection_to_clipboard",
+  "goto_line_start",
+  "collapse_selection",
+  "normal_mode",
+]
 p = "replace_selections_with_clipboard" # No life without this
 P = "paste_clipboard_before"
 
